@@ -6,9 +6,20 @@
     <title>Suporte R10 Score</title>
   </head>
   <body>
+    <!-- R10 Score Zendesk Widget script -->
+    <!-- Start of r10score Zendesk Widget script -->
     <script
       id="ze-snippet"
       src="https://static.zdassets.com/ekr/snippet.js?key=f5cec64d-5bf1-4706-b6cb-a0793708c5a5"
     ></script>
+    <!-- End of r10score Zendesk Widget script -->
+
+    <!-- Auto open the chat -->
+    <script type="text/javascript">
+      zE("messenger", "open");
+      zE("messenger:on", "close", function () {
+        zE("messenger", "open");
+      });
+    </script>
   </body>
 </html>
