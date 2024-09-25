@@ -1,105 +1,41 @@
 <!DOCTYPE html>
-<html lang="pt-BR" style="height: 100vh">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Suporte R10 Score</title>
+    <link rel="stylesheet" href="styles/styles.css" />
   </head>
-  <body
-    style="
-      height: 100% !important;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-    "
-  >
-    <!-- R10 Score Zendesk Widget script -->
-    <!-- Start of r10score Zendesk Widget script -->
-    <script
-      id="ze-snippet"
-      src="https://static.zdassets.com/ekr/snippet.js?key=f5cec64d-5bf1-4706-b6cb-a0793708c5a5"
-    ></script>
-    <!-- End of r10score Zendesk Widget script -->
-
-    <!-- Auto open the chat -->
-    <script type="text/javascript">
-      zE("messenger", "open");
-      zE("messenger:on", "close", function () {
-        zE("messenger", "open");
-      });
-    </script>
-
-    <script>
-      // Função para verificar a existência da div com `visibility: visible`
-      const checkDivExistence = setInterval(() => {
-        const div = document.querySelector(
-          'div[style*="visibility: visible;"]'
-        );
-        if (div) {
-          console.log("Div com visibility: visible encontrada!");
-          const loadingElement = document.getElementById("loading");
-          if (loadingElement) {
-            loadingElement.style.display = "none";
-          }
-
-          // Para a verificação após encontrar a div
-          clearInterval(checkDivExistence);
-
-          // Execute qualquer ação aqui ao encontrar a div
-          // Por exemplo, adicionar estilos, manipular o DOM, etc.
-
-          // Para a verificação após encontrar a div
-          clearInterval(checkDivExistence);
-        }
-      }, 10); // Verifica a cada 500 milissegundos
-    </script>
-
-    <script
-      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
-      type="module"
-    ></script>
-
+  <body>
+    <!-- Loading -->
     <dotlottie-player
       id="loading"
       src="https://lottie.host/1f2e2e48-4381-44a9-ae8d-9037ec8b08b2/hkK9JKZkog.json"
       background="transparent"
       speed="1"
-      style="width: 200px; height: 200px"
       loop
       autoplay
     ></dotlottie-player>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const checkIframeExistence = setInterval(() => {
-          const iframe = document.querySelector(
-            'iframe[title="Janela de mensagens"]'
-          );
-          if (iframe) {
-            iframe.setAttribute("style", "");
-            iframe.style.position = "fixed";
-            iframe.style.boxShadow = "rgba(23, 73, 77, 0.15) 0px 20px 30px";
-            iframe.style.zIndex = "999999";
-            iframe.style.borderRadius = "0px";
-            iframe.style.transformOrigin = "center bottom";
-            iframe.style.border = "0px";
-            iframe.style.height = "100%";
-            iframe.style.maxHeight = "none";
-            iframe.style.inset = "auto 0px 0px";
-            iframe.style.width = "100%";
-            iframe.style.transition =
-              "transform 445ms cubic-bezier(0.76, 0, 0.16, 1) 300ms, opacity 295ms cubic-bezier(0.76, 0, 0.16, 1) 360ms, height linear";
-            iframe.style.transform = "scale(1) translateY(0px)";
-            iframe.style.filter = "brightness(100%)";
-            iframe.style.opacity = "1";
-            iframe.style.pointerEvents = "auto";
-            iframe.style.marginBottom = "0px";
+    <!-- R10 Score Zendesk Widget script -->
+    <script
+      id="ze-snippet"
+      src="https://static.zdassets.com/ekr/snippet.js?key=f5cec64d-5bf1-4706-b6cb-a0793708c5a5"
+    ></script>
 
-            clearInterval(checkIframeExistence);
-          }
-        }, 10);
-      });
-    </script>
+    <!-- Auto open the zendesk chat -->
+    <script src="scripts/autoOpenZendesk.js"></script>
+
+    <!-- Hide loading when zendesk is loaded -->
+    <script src="scripts/loadingHandler.js"></script>
+
+    <!-- Lottie script for the loading -->
+    <script
+      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+      type="module"
+    ></script>
+
+    <!-- Keeps zendesk chat always in mobile mode -->
+    <script src="scripts/mobileModeZendesk.js"></script>
   </body>
 </html>
